@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Africa Search List</title>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' 
+    type='text/css'>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body ng-app="va">
+    <header class="site-header">
+            <input type="text" class="search-input" placeholder="Country, timezone, curency, etc..." ng-model="search.name">
+        </div>
+    </header>
+    
+    <div class="main">
+        <div ng-controller="searchlist as list">
+            <div class="list">
+                <li class="list-item item" ng-repeat="country in list.countries | filter:search">
+                    <h2 class="item-name" ng-bind-html="country.name | highlight:search.name"></h2>
+                    <p class="item-summary">{{::country.capital}}</p>
+                </li>
+            </div>
+        </div>
+    </div>
+    <footer></footer>
+
+    <script type="text/javascript" src="js/vendors/angular.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+</body>
+
+</html>
